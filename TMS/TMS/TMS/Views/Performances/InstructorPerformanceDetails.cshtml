@@ -1,0 +1,102 @@
+﻿@model TMS.Models.Performance
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Performance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Trainee Name:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trainee.Name)
+        </dd>
+        <dt>
+            Trainee ID:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trainee.Id)
+        </dd>
+        <dt>
+            Course Name:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Course.Name)
+        </dd>
+        <dt>
+            Batch No:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Batch.Number)
+        </dd>
+        <dt>
+            Task Name:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Task.Name)
+        </dd>
+        <dt>
+            Task No:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Task.Number)
+        </dd>
+        <dt>
+            Instructor Name:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Instructor.Name)
+        </dd>
+        <dt>
+            Task Progress:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Progress.Completed)
+        </dd>
+        <dt>
+            Task Accuracy:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Accuracy)
+        </dd>
+        <dt>
+            Performance Score:
+        </dt>
+        <dd>
+            @(Convert.ToInt32(Model.Progress.Completed) + (Model.Accuracy))
+        </dd>
+        <dt>
+            Performance Status:
+        </dt>
+        @if ((Convert.ToInt32(Model.Progress.Completed) + (Model.Accuracy)) > 179)
+        {
+            <dd>Exelent</dd>
+        }
+        else if ((Convert.ToInt32(Model.Progress.Completed) + (Model.Accuracy)) > 159 && (Convert.ToInt32(Model.Progress.Completed) + (Model.Accuracy)) < 180)
+        {
+            <dd>Good</dd>
+        }
+        else if ((Convert.ToInt32(Model.Progress.Completed) + (Model.Accuracy)) > 139 && (Convert.ToInt32(Model.Progress.Completed) + (Model.Accuracy)) < 160)
+        {
+            <dd>Average</dd>
+        }
+        else if ((Convert.ToInt32(Model.Progress.Completed) + (Model.Accuracy)) > 119 && (Convert.ToInt32(Model.Progress.Completed) + (Model.Accuracy)) < 140)
+        {
+            <dd>Low</dd>
+        }
+        else
+        {
+            <dd>Bad</dd>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+    <a asp-action="InstructorPerformanceIndex" class="btn btn-primary">Back to List</a>
+</div>

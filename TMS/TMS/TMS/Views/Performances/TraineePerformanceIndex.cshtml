@@ -1,0 +1,100 @@
+﻿@model IEnumerable<TMS.Models.Performance>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_TraineeLayout.cshtml";
+    int i = 1;
+}
+
+<h2>Performance Index</h2>
+
+@*<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>*@
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                SL No.
+            </th>
+            <th>
+                Trainee Name
+            </th>
+            <th>
+                Trainee ID
+            </th>
+            <th>
+                Task No.
+            </th>
+            <th>
+                Task Progress
+            </th>
+            <th>
+                Task Accuracy
+            </th>
+            <th>
+                Performance Score
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trainee.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trainee.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Task.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Progress.Completed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Accuracy)
+                </td>
+                <td>
+                    @(Convert.ToInt32(item.Progress.Completed) + (item.Accuracy))
+                </td>
+
+                @if ((Convert.ToInt32(item.Progress.Completed) + (item.Accuracy)) > 179)
+                {
+                    <td>Exelent</td>
+                }
+                else if ((Convert.ToInt32(item.Progress.Completed) + (item.Accuracy)) > 159 && (Convert.ToInt32(item.Progress.Completed) + (item.Accuracy)) < 180)
+                {
+                    <td>Good</td>
+                }
+                else if ((Convert.ToInt32(item.Progress.Completed) + (item.Accuracy)) > 139 && (Convert.ToInt32(item.Progress.Completed) + (item.Accuracy)) < 160)
+                {
+                    <td>Average</td>
+                }
+                else if ((Convert.ToInt32(item.Progress.Completed) + (item.Accuracy)) > 119 && (Convert.ToInt32(item.Progress.Completed) + (item.Accuracy)) < 140)
+                {
+                    <td>Low</td>
+                }
+                else
+                {
+                    <td>Bad</td>
+                }
+
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                    <a asp-action="TraineePerformanceDetails" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+﻿@*@model IEnumerable<TMS.Models.AccountViewModels.RegisterViewModel>*@
+@model List<TMS.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "RegisterIndex";
+    Layout = "~/Views/Shared/_CoordinatorLayout.cshtml";
+}
+
+<h2>Registered User Info</h2>
+<p>
+    <a asp-action="Register">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Email
+            </th>
+            <th>
+                Password
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PasswordHash)
+                </td>
+                @*<td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
+
+

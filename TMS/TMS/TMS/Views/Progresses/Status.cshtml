@@ -1,0 +1,9 @@
+﻿@model TMS.Models.Progress
+@{
+    ViewData["Title"] = "Status";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<h2 class="text-center text-success">@ViewBag.msg</h2>
+<a asp-controller="Progresses" asp-action="InstructorProgressIndex"  class="btn btn-primary">Back To List</a>
+

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<TMS.Models.Tasks>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_TraineeLayout.cshtml";
+    int i = 1;
+}
+
+<h2>Task Index</h2>
+
+@*<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>*@
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                SL No.
+            </th>
+            <th>
+                Trainee Name
+            </th>
+            <th>
+                Trainee ID
+            </th>
+            <th>
+                Instructor Name
+            </th>
+            <th>
+                Task ID
+            </th>
+            <th>
+                Task Name
+            </th>
+            <th>
+                Task No.
+            </th>
+            <th>
+                Assign Date
+            </th>
+            <th>
+                Submision Date
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trainee.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trainee.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Instructor.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubmissionDate)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>*@
+                    <a asp-action="TraineeTaskDetails" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>

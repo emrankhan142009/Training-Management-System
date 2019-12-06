@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-size: 18px;
+    overflow: hidden;
+    color: #ECECEC;
+    text-align: center;
+    font-family: "Segoe UI";
+    background: url('../images/group 1.png') no-repeat;
+    background-size: cover;
+}
+.form{
+    top: 43%;
+    left: 50%;
+    padding:15px;
+    width: 400px;
+    position: absolute;
+    text-align: center;
+    border: 2px solid #008435;
+    background: rgba(17,30,20, .9);
+    transform: translate(-50%, -50%);
+}
+.form .logo img{
+    width: 26%;
+    margin: 20px 0 30px 0;
+}
+.form .formBody{
+    width: 95%;
+    margin: 0 auto;
+    text-align: left;
+}
+.form .formBody input{
+    width: 100%;
+    border:none;
+    height: 45px;
+    outline: none;
+    border-radius: 9px;
+    padding: 0 0 0 5px;
+    background: #ECECEC;
+}
+.form button{
+    font-size: 17px;
+    color: #ECECEC;
+    padding: 8px 43px;
+    border-radius: 9px;
+    margin: 30px 0 70px;
+    background: #484C43;
+    border: 2px solid #ECECEC;
+
+}
+footer{
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    margin-bottom: 35px;
+}
+footer p{
+    margin: 2px 0;
+    font-size: 16.5px;
+}

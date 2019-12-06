@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "CreateRole";
+    Layout = "~/Views/Shared/_CoordinatorLayout.cshtml";
+}
+
+<h2 class="alert alert-info">CreateRole</h2>
+<div class="row">
+    <div class="col-md-4 col-lg-offset-4">
+        <div><h4>@ViewBag.msg</h4></div>
+        <form class="form-inline" asp-controller="Account" asp-action="CreateRole" method="post">
+            <label>Role:</label>
+            <input type="text" class="form-control" name="rolename" value="" placeholder="Please type role name."/>
+            <input type="submit" class="form-control btn btn-success"  value="Create Role" />
+        </form>
+    </div>
+</div>
+

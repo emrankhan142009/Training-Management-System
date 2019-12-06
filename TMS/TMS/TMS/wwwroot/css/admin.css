@@ -1,0 +1,105 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: #939292;
+}
+.body-content {
+    margin-left: 13.5%;
+    margin-right: 7px;
+    margin-top: 4%;
+    padding: 10px 20px;
+    color: black;
+    background-color: white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+}
+   
+.top-navbar {
+    width: 100%;
+    height: 85px;
+    background-color: white;
+    overflow: auto;
+    border-bottom:2px solid green;
+}
+    .top-navbar h3 {
+        text-align: center;
+        font-family: 'Agency FB';
+        font-size: 20px;
+        color: rgb(0, 204, 102);
+        letter-spacing: 2px;
+    }
+
+    .top-navbar p {
+        text-align: center;
+        padding-top:3px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        color: black;
+        letter-spacing: 5px;
+    }
+
+
+/* Fixed sidenav, full height */
+.sidenav {
+    height: 100%;
+    width: 13%;
+    position:fixed;
+    z-index: 1;
+    top: 6%;
+    left: 0;
+    background-color: #222;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+    /* Style the sidenav links and the dropdown button */
+    .sidenav a, .dropdown-btn {
+        padding: 16px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 16px;
+        color: white;
+        display: block;
+        border: none;
+        background: #222;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        outline: none;
+    }
+
+        /* On mouse-over */
+        .sidenav a:hover, .dropdown-btn:hover {
+            color: rgb(0, 204, 102);
+        }
+/* Add an active class to the active dropdown button */
+.active {
+    background-color: rgb(255, 99, 71);
+    color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+    display: none;
+    background-color: white;
+    padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+    float: right;
+    padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+}
+}

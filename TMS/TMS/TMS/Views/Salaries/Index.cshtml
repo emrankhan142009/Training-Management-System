@@ -1,0 +1,90 @@
+﻿@model IEnumerable<TMS.Models.Salary>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CoordinatorLayout.cshtml";
+    int i = 1;
+}
+
+<h2>Salary Index</h2>
+
+<div class="row">
+    <div class="col-md-10">
+        <form class="form-inline" asp-controller="Salaries" asp-action="Index" method="post">
+            <a asp-action="Create" class="btn btn-success">Create New</a>
+            <input type="number" name="Iid" class="form-control" value="@ViewBag.stext" placeholder="Search By Trainee ID..." />
+            <input type="submit" class="form-control btn btn-primary" value="Search" />
+            @*@if (ViewBag.status)
+        {
+            <a asp-action="Index" class="btn btn-success">Back To List</a>
+        }*@
+        </form>
+        <br />
+        <a asp-action="Index" class="btn btn-success">Back To List</a>
+    </div>
+</div>
+<br />
+
+@*<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>*@
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                SL No.
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                Instructor Name
+            </th>
+            <th>Instructor ID</th>
+            <th>
+                Basic Salary
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bonus)
+            </th>
+            <th>
+                Total Salary
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Instructor.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Instructor.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasicSalary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bonus)
+                </td>
+                <td>
+                    @(Convert.ToInt32(item.BasicSalary) + (item.Bonus))
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>

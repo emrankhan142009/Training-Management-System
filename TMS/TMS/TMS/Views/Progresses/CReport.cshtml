@@ -1,0 +1,89 @@
+﻿@model IEnumerable<TMS.Models.Progress>
+
+@{
+    ViewData["Title"] = "Creport";
+    Layout = "~/Views/Shared/_CoordinatorLayout.cshtml";
+    int i = 1;
+}
+
+<div id="print">
+<h2>Progress Report</h2>
+<hr />
+<dl class="dl-horizontal">
+    <dt>Trainee name:</dt>
+    <dd>@ViewBag.tn</dd>
+    <dt>Trainee ID:</dt>
+    <dd>@ViewBag.ti</dd>
+</dl>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                SL No.
+            </th>
+            <th>
+                Progress ID
+            </th>
+            <th>
+                Trainee Name
+            </th>
+            <th>
+                Trainee ID
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Task No.
+            </th>
+            <th>
+                Task Progress
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@i</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trainee.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trainee.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task.Number)
+            </td>
+            <td>
+                <div class="progress" style="width:100%">
+                    <div class="progress-bar progress-bar-success" style="width:@item.Completed%">@item.Completed%</div>
+                </div>
+            </td>
+
+        </tr>
+            i++;
+        }
+    </tbody>
+</table>
+</div>
+
+<button id="pbtn" class="btn btn-success" onclick="printdiv('print');">Print</button>
+
+<script language="javascript">
+    function printdiv(printpage) {
+        var newstr = document.all.item(printpage).innerHTML;
+        var oldstr = document.body.innerHTML;
+        document.body.innerHTML = newstr;
+        window.print();
+        document.body.innerHTML = oldstr;
+        return false;
+    }
+</script>

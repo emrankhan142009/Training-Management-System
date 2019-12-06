@@ -1,0 +1,91 @@
+﻿@model IEnumerable<TMS.Models.Tasks>
+@{
+    ViewData["Title"] = "IReport";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+    int i = 1;
+}
+
+<div id="print">
+    <h2>Task Report</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Trainee name:</dt>
+        <dd> @ViewBag.tn</dd>
+        <dt>Trainee ID:</dt>
+        <dd>@ViewBag.ti</dd>
+    </dl>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    SL No.
+                </th>
+                
+                <th>
+                    Instructor Name
+                </th>
+                <th>
+                    Task ID
+                </th>
+                <th>
+                    Task Name
+                </th>
+                <th>
+                    Task No.
+                </th>
+                <th>
+                    Assign Date
+                </th>
+                <th>
+                    Submision Date
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Instructor.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AssignDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubmissionDate)
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<button id="pbtn" class="btn btn-success" onclick="printdiv('print');">Print</button>
+
+<script language="javascript">
+    function printdiv(printpage) {
+        var newstr = document.all.item(printpage).innerHTML;
+        var oldstr = document.body.innerHTML;
+        document.body.innerHTML = newstr;
+        window.print();
+        document.body.innerHTML = oldstr;
+        return false;
+    }
+</script>
+
+
+
+

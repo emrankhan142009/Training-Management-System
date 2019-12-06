@@ -1,0 +1,81 @@
+﻿@model TMS.Models.Progress
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_CoordinatorLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Progress</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Progress ID:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            Trainee Name:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trainee.Name)
+        </dd>
+        <dt>
+            Trainee ID:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trainee.Id)
+        </dd>
+        <dt>
+            Course Name:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Course.Name)
+        </dd>
+        <dt>
+            Batch No:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Batch.Number)
+        </dd>
+        <dt>
+            Instructor Name:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Instructor.Name)
+        </dd>
+        <dt>
+            Task ID:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Task.Id)
+        </dd>
+        <dt>
+            Task No:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Task.Number)
+        </dd>
+        <dt>
+           Date:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+           Task Progress:
+        </dt>
+        <dd>
+            <div class="progress" style="width:100%">
+                <div class="progress-bar progress-bar-success" style="width:@Model.Completed%">@Model.Completed%</div>
+            </div>
+        </dd>
+    </dl>
+</div>
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>*@
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>

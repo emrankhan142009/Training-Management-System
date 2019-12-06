@@ -1,0 +1,86 @@
+﻿@model IEnumerable<TMS.Models.Salary>
+
+@{
+    ViewData["Title"] = "CReport";
+    Layout = "~/Views/Shared/_CoordinatorLayout.cshtml";
+    int i = 1;
+}
+
+<div id="print">
+    <h2>Salary Report</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Instructor name:</dt>
+        <dd>@ViewBag.tn</dd>
+        <dt>Instructor ID:</dt>
+        <dd>@ViewBag.ti</dd>
+    </dl>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    SL No.
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    Instructor Name
+                </th>
+                <th>
+                    Instructor ID
+                </th>
+                <th>
+                    Basic Salary
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bonus)
+                </th>
+                <th>
+                    Total Salary
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@i</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Instructor.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Instructor.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasicSalary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bonus)
+                </td>
+                <td>
+                    @(Convert.ToInt32(item.BasicSalary) + (item.Bonus))
+                </td>
+            </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+</div>
+
+<button id="pbtn" class="btn btn-success" onclick="printdiv('print');">Print</button>
+
+<script language="javascript">
+    function printdiv(printpage) {
+        var newstr = document.all.item(printpage).innerHTML;
+        var oldstr = document.body.innerHTML;
+        document.body.innerHTML = newstr;
+        window.print();
+        document.body.innerHTML = oldstr;
+        return false;
+    }
+</script>

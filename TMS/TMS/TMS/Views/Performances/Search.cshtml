@@ -1,0 +1,26 @@
+﻿@model TMS.Models.Performance
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_CoordinatorLayout.cshtml";
+}
+
+<h2 class="text-center text-info">Search for assigned task</h2>
+<br />
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <form asp-action="Search" method="post">
+            <div class="form-group">
+                <label asp-for="CourseId" class="control-label">Course Name</label>
+                <select asp-for="CourseId" class="form-control" name="cid" asp-items="ViewBag.CourseId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatchId" class="control-label">Batch Id</label>
+                <select asp-for="BatchId" class="form-control" name="bid" asp-items="ViewBag.BatchId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+

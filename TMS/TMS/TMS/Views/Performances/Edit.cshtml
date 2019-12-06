@@ -1,0 +1,65 @@
+﻿@model TMS.Models.Performance
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>Performance</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="CourseId" class="control-label">Course Name</label>
+                <select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId"></select>
+                <span asp-validation-for="CourseId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatchId" class="control-label">Batch ID</label>
+                <select asp-for="BatchId" class="form-control" asp-items="ViewBag.BatchId"></select>
+                <span asp-validation-for="BatchId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TraineeId" class="control-label">Trainee ID</label>
+                <select asp-for="TraineeId" class="form-control" asp-items="ViewBag.TraineeId"></select>
+                <span asp-validation-for="TraineeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TaskId" class="control-label">Task ID</label>
+                <select asp-for="TaskId" class="form-control" asp-items="ViewBag.TaskId"></select>
+                <span asp-validation-for="TaskId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InstructorId" class="control-label">Instructor Name</label>
+                <select asp-for="InstructorId" class="form-control" asp-items="ViewBag.InstructorId"></select>
+                <span asp-validation-for="InstructorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProgressId" class="control-label">Progress ID</label>
+                <select asp-for="ProgressId" class="form-control" asp-items="ViewBag.ProgressId"></select>
+                <span asp-validation-for="ProgressId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Accuracy" class="control-label">Task Accuracy</label>
+                <input asp-for="Accuracy" class="form-control" />
+                <span asp-validation-for="Accuracy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="InstructorPerformanceIndex" class="btn btn-primary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

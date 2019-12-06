@@ -1,0 +1,8 @@
+﻿@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "LandingPage";
+    Layout = "~/Views/Shared/_CoordinatorLayout.cshtml";
+}
+
+<h3 class="text-center">Welcome @UserManager.GetUserName(User)! To The Coordinator Panel</h3>
+

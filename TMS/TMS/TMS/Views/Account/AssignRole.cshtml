@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewData["Title"] = "AssignRole";
+    Layout = "~/Views/Shared/_CoordinatorLayout.cshtml";
+}
+
+<h2 class="alert alert-info">Assign Role</h2>
+<div class="row">
+    <div class="col-md-6 col-lg-offset-3">
+        <div><h4 class="text-primary">@ViewBag.msg</h4></div>
+        <form class="form-inline" asp-controller="Account" asp-action="AssignRole" method="post">
+            <label>User Email:</label>
+            <input type="email" class="form-control" name="useremail" value="" placeholder="Please type user email."/>
+            <select class="form-control" name="rname">
+                @foreach (var item in ViewBag.roles)
+                {
+                    <option value="@item">@item</option>
+                }
+            </select>
+            <input type="submit" class="form-control btn btn-success"  value="Assign Role" />
+        </form>
+    </div>
+</div>
+

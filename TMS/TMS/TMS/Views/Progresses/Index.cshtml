@@ -1,0 +1,94 @@
+﻿@model IEnumerable<TMS.Models.Progress>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CoordinatorLayout.cshtml";
+    int i = 1;
+}
+
+<h2>Progress Index</h2>
+
+<div class="row">
+    <div class="col-md-10">
+        <form class="form-inline" asp-controller="Tasks" asp-action="Index" method="post">
+            <input type="number" name="tid" class="form-control" value="@ViewBag.stext" placeholder="Search By Trainee ID..." />
+            <input type="submit" class="form-control btn btn-primary" value="Search" />
+            @*@if (ViewBag.status)
+                {
+                    <a asp-action="Index" class="btn btn-success">Back To List</a>
+                }*@
+        </form>
+        <br />
+        <a asp-action="Index" class="btn btn-success">Back To List</a>
+    </div>
+</div>
+<br />
+
+@*<p>
+        <a asp-action="Create" class="btn btn-success">Create New</a>
+    </p>*@
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                SL No.
+            </th>
+            <th>
+                Progress ID
+            </th>
+            <th>
+                Trainee Name
+            </th>
+            <th>
+                Trainee ID
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Task No.
+            </th>
+            <th>
+                Task Progress
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trainee.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trainee.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Task.Number)
+                </td>
+                <td>
+                    <div class="progress" style="width:100%">
+                        <div class="progress-bar progress-bar-success" style="width:@item.Completed%">@item.Completed%</div>
+                    </div>
+                </td>
+
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>*@
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>

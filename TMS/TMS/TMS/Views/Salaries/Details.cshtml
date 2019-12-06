@@ -1,0 +1,56 @@
+﻿@model TMS.Models.Salary
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_CoordinatorLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Salary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Instructor name:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Instructor.Name)
+        </dd>
+        <dt>
+            Instructor ID:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Instructor.Id)
+        </dd>
+        <dt>
+           Salary Date:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+           Basic Salary:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BasicSalary)
+        </dd>
+        <dt>
+           Bonus:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bonus)
+        </dd>
+        <dt>
+            Total Salary:
+        </dt>
+        <dd>
+            @(Convert.ToInt32(Model.BasicSalary) + (Model.Bonus))
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a> 
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>
